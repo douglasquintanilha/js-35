@@ -4,8 +4,11 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.15.0",
+    "consign": "^0.1.2",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
+    "express-load": "^1.1.15",
     "mysql": "^2.10.2"
   },
   "devDependencies": {},

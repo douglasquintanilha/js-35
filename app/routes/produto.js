@@ -1,16 +1,30 @@
-var mysql = require("mysql");
 module.exports = function (app) {
 	app.get("/produtos",function (req,res) {
-		var connection = mysql.createConnection({
-			host: 'localhost',
-			user: 'root',
-			password: '',
-			database: 'casadocodigo'
-		});
-		connection.query("SELECT * FROM livros", function (erro,produtos) {
-			res.render("produtos/lista",{lista: produtos});
+		var connection = app.infra.connectionFactory();
+		var produtoDao = new app.infra.ProdutoDao(connection);
+		produtoDao.lista(function (erro,produtos){
+			res.format({
+				html: function () {
+					res.render("produtos/lista",{lista: produtos});		 
+				},
+				json: function () {
+					res.json(produtos);	
+				}
+			});
 		});
 		connection.end();
-		
+	});
+
+	app.post("/produtos",function (req,res) {
+		var produto = req.body;
+		var connection = app.infra.connectionFactory();
+		var produtoDao = new app.infra.ProdutoDao(connection);
+		produtoDao.salva(produto,function () {	
+			res.redirect("/produtos");
+		});
+	})
+
+	app.get("/produtos/form",function (req,res) {
+		res.render("produtos/form",{produto: {}});
 	});
 }

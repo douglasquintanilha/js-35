@@ -1,0 +1,43 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/forms.css">
+</head>
+<body>
+    <div>
+        <div class ="container min-container">
+            <h2 class="basic-title">Add</h2>
+            
+            <!-- FORM DE PRODUTOS -->
+
+            <form action="/produtos" method="post" class="well" role="form">
+                <div class="form-group">
+                    <label for="titulo">Titulo</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-unchecked"></i></span>
+                        <input type="text" name="titulo" placeholder="titulo do livro" value="<%=produto.titulo%>"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="preco">Preço</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-unchecked"></i></span>
+                        <input type="text" name="preco" placeholder="valor do livro" value="<%=produto.preco%>"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descricao</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-unchecked"></i></span>
+                        <textarea name="descricao"><%=produto.descricao%></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Gravar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
