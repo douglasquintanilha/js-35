@@ -11,7 +11,13 @@
             <h2 class="basic-title">Add</h2>
             
             <!-- FORM DE PRODUTOS -->
-
+                <%if(locals.validationErros){ %>
+                <ul class="list-unstyled">
+                    <%for(var i = 0; i < validationErros.length; i++) {%>
+                        <li class="alert-danger"><%=validationErros[i].msg%> </li>
+                    <% }%>
+                </ul>
+            <% } %>
             <form action="/produtos" method="post" class="well" role="form">
                 <div class="form-group">
                     <label for="titulo">Titulo</label>
