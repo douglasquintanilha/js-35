@@ -18,7 +18,11 @@
                     <% }%>
                 </ul>
             <% } %>
-            <form action="/produtos" method="post" class="well" role="form">
+            
+            <% var metodo; if(produto.id){metodo="put";}else{metodo="post";} %>
+            <form action="/produtos" method="POST" class="well" role="form">
+                <input type="hidden" name="id" value="<%= produto.id %>" >
+                <input type="hidden" name="_method" value="<%=metodo%>" >
                 <div class="form-group">
                     <label for="titulo">Titulo</label>
                     <div class="input-group">

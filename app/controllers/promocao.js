@@ -7,7 +7,7 @@ module.exports = function (app) {
 
 	controller.salva = function (req,res) {
 		var promocao = req.body;
-		console.log(promocao);
+        app.get("io").emit("novaPromocao",promocao);
 
 		var connection = app.infra.connectionFactory();
 		var promocaoDao = new app.infra.PromocaoDao(connection);

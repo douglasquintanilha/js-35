@@ -10,9 +10,14 @@
     "express": "^4.13.4",
     "express-load": "^1.1.15",
     "express-validator": "^2.19.2",
-    "mysql": "^2.10.2"
+    "method-override": "^2.3.5",
+    "mysql": "^2.10.2",
+    "socket.io": "^1.4.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "supertest": "^1.2.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

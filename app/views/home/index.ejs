@@ -41,6 +41,8 @@
 
     <link href="/css/site/book-collection.css"
           rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.css">
 </head>
 <body class="home">
 
@@ -165,6 +167,15 @@
 </section>
 
 <!-- fim-->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="nova-promocao">Novas Promocoes</h2>        
+    </div>        
+    <div class="panel-body">
+        <ul id="promo"></ul>
+    </div>
+    
+</div>
 
 <footer id="layout-footer">
     <div class="clearfix container">
@@ -248,5 +259,14 @@
         </div>
     </div>
 </footer>
+<script src="/js/jquery.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io();
+    socket.on("novaPromocao",function(promocao){
+       $("<li>").append(promocao.descricao).appendTo("#promo"); 
+    });
+
+</script>
 </body>
 </html>

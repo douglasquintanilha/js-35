@@ -21,9 +21,9 @@
 		            </tr>
 		            </thead>
 		            <tbody>
-		            <% for(var i=0; i<lista.length; i++) {%>
+		            <% for(var i=0; i< 3 ; i++) { %>
 		                <tr>
-		                    <td><%= lista[i].titulo %></td>
+		                    <td><a href="produtos/form/<%=lista[i].id %>"><%= lista[i].titulo %></a></td>
 		                    <td><%= lista[i].preco %></td>
 		                    <td><p><%= lista[i].descricao%></p></td>
 		                </tr>

@@ -3,6 +3,7 @@ module.exports = function () {
 	var load = require("consign");
 	var express = require("express");
 	var validator = require("express-validator");
+    var methodOverride = require("method-override");
 	var app = express();
 	
 	app.set("view engine","ejs");
@@ -11,16 +12,20 @@ module.exports = function () {
 	app.use(express.static("./public"));
 	app.use(bodyParser.urlencoded({extended: true}));
 	app.use(bodyParser.json());
+    app.use(methodOverride(function (req,res) {
+        if(req.body && req.body._method){
+            var method = req.body._method;
+            delete req.body._method;
+            return method;
+        }
+    }));
 	app.use(validator());
 	
 	load({cwd:"app"}).include("infra")
 					 .then("controllers")
 					 .then("routes")
 					 .into(app);
-
-	app.use("*",function (req,res,next) {
-		res.send("Problema");
-	})					
+				
 
 	return app;
 }
